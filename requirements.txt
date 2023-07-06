@@ -470,7 +470,7 @@ spyder @ file:///opt/concourse/worker/volumes/live/5ce630f9-babe-4f53-755a-cd732
 spyder-kernels @ file:///opt/concourse/worker/volumes/live/72f0c5be-8b9e-43d2-67e5-f038915937d7/volume/spyder-kernels_1634236950410/work
 SQLAlchemy @ file:///opt/concourse/worker/volumes/live/454d700c-0b8b-469e-7add-023d0df6ee3d/volume/sqlalchemy_1626948440911/work
 sqlparse==0.4.3
-starlette==0.20.4
+starlette==0.27.0
 statsmodels @ file:///opt/concourse/worker/volumes/live/237cf070-cf87-4ff8-6149-8213b5eb40a5/volume/statsmodels_1614023802257/work
 sympy @ file:///opt/concourse/worker/volumes/live/5ed26665-a223-4942-7dc1-66b2b3830ab1/volume/sympy_1635237064989/work
 tables @ file:///opt/concourse/worker/volumes/live/daa73f70-754b-4f28-73ce-6f96c40f4b9d/volume/pytables_1607975400838/work
