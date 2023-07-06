@@ -104,7 +104,7 @@ goto-label==0.1.2
 goto-statement==1.2
 gradio==3.20.1
 greenlet @ file:///opt/concourse/worker/volumes/live/b27b4e9e-4697-4d57-403b-f82d36a391ca/volume/greenlet_1628888146890/work
-grpcio==1.48.1
+grpcio==1.53.0
 h11==0.14.0
 h5py @ file:///opt/concourse/worker/volumes/live/e7503571-c7b1-45ac-4bb7-37b5178cb0df/volume/h5py_1622088436205/work
 HeapDict @ file:///Users/ktietz/demo/mc3/conda-bld/heapdict_1630598515714/work
