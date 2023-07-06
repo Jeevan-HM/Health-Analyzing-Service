@@ -102,7 +102,7 @@ google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
 goto-label==0.1.2
 goto-statement==1.2
-gradio==3.20.1
+gradio==3.34.0
 greenlet @ file:///opt/concourse/worker/volumes/live/b27b4e9e-4697-4d57-403b-f82d36a391ca/volume/greenlet_1628888146890/work
 grpcio==1.48.1
 h11==0.14.0
