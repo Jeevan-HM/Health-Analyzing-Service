@@ -469,7 +469,7 @@ sphinxcontrib-websupport @ file:///tmp/build/80754af9/sphinxcontrib-websupport_1
 spyder @ file:///opt/concourse/worker/volumes/live/5ce630f9-babe-4f53-755a-cd7324c300d9/volume/spyder_1636480249527/work
 spyder-kernels @ file:///opt/concourse/worker/volumes/live/72f0c5be-8b9e-43d2-67e5-f038915937d7/volume/spyder-kernels_1634236950410/work
 SQLAlchemy @ file:///opt/concourse/worker/volumes/live/454d700c-0b8b-469e-7add-023d0df6ee3d/volume/sqlalchemy_1626948440911/work
-sqlparse==0.4.3
+sqlparse==0.4.4
 starlette==0.20.4
 statsmodels @ file:///opt/concourse/worker/volumes/live/237cf070-cf87-4ff8-6149-8213b5eb40a5/volume/statsmodels_1614023802257/work
 sympy @ file:///opt/concourse/worker/volumes/live/5ed26665-a223-4942-7dc1-66b2b3830ab1/volume/sympy_1635237064989/work
