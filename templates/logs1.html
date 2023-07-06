@@ -1,0 +1,147 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial -scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Analytics</title>
+    <link rel="stylesheet" href="/static/log1.css" />
+    <script src="/static/JS/logs.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Add jQuery library -->
+  </head>
+  <body>
+    <div class="Logs">
+      <table>
+        <thead>
+          <tr>
+            <th>Sl.no</th>
+            <th>Start Sl.no</th>
+            <th>End Sl.no</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Predictions</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <div class="tooltip">
+            <!-- templates/index.html -->
+            <br />
+            <h1>Ranged Logs</h1>
+            {% for row in average_database %}
+            <tr
+              title="HeartRate: {{ row[3] }} count/min, 
+                HeartRateVariabilitySDNN: {{ row[4] }} ms, 
+                RespiratoryRate: {{ row[5] }} count/min, 
+                OxygenSaturation: {{ row[6] }} %, 
+                WristTemperature: {{ row[7] }} degC, 
+                BodyMass: {{ row[8] }} kg"
+            >
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{ row[3] }}</td>
+              <td>{{ row[4] }}</td>
+              <td>{{row[11], row[12], row[13]}}</td>
+            </tr>
+            {% endfor %}
+            <!--<span class="tooltiptext">Disease name</span>-->
+          </div>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Sl.no</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Predictions</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <div class="tooltip">
+            <!-- templates/index.html -->
+            <br />
+            <h1>Logs</h1>
+            {% for row in database %}
+            <tr
+              title="HeartRate: {{ row[3] }} count/min, 
+                HeartRateVariabilitySDNN: {{ row[4] }} ms, 
+                RespiratoryRate: {{ row[5] }} count/min, 
+                OxygenSaturation: {{ row[6] }} %, 
+                WristTemperature: {{ row[7] }} degC, 
+                BodyMass: {{ row[8] }} kg"
+            >
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{row[9], row[10], row[11]}}</td>
+
+              <td>
+                <input type="checkbox" id="{{ row[0] }}" value="{{row[0]}}" />
+              </td>
+            </tr>
+            {% endfor %}
+            <!--<span class="tooltiptext">Disease name</span>-->
+          </div>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <div class="center">
+        <button type="text" class="button">
+          <a href="/" style="color: white; text-decoration: None"
+            ><span>Home</span></a
+          >
+        </button>
+        <form id="myForm" action="/average_analytics" method="POST">
+          <!-- your form elements here -->
+          <button class="button" id="getCheckedButton">
+            <a
+              href="/average_analytics"
+              style="color: white; text-decoration: None"
+              ><span>Analyze Selected Reports</span></a
+            >
+          </button>
+        </form>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        // add event listener to form submission
+        $("#myForm").submit(function (event) {
+          // prevent form from submitting normally
+          event.preventDefault();
+
+          // get selected checkbox ids
+          var ids = [];
+          $("input:checked").each(function () {
+            ids.push($(this).attr("id"));
+          });
+
+          // add ids to form data
+          var formData = new FormData(this);
+          formData.append("ids", JSON.stringify(ids));
+          console.log(ids);
+          // submit form using AJAX request
+          $.ajax({
+            type: "POST",
+            url: "/average_analytics",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              // handle success response
+            },
+            error: function (xhr, status, error) {
+              // handle error response
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

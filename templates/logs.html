@@ -1,0 +1,192 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial -scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Analytics</title>
+    <link rel="stylesheet" href="/static/log.css" />
+    <script src="/static/JS/logs.js" defer></script>
+    <script src="/static/JS/collapse.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Add jQuery library -->
+  </head>
+  <body>
+    <div class="Logs">
+            <br />
+            <h1>Logs</h1>
+            {% for row in database %}
+            <div class="accordion-item">
+              <div class="accordion-item-header">
+                <p title="Sl.no">{{row[0]}}</p>
+                <p title="Date">{{row[1]}}</p>
+                <p title="Time">{{row[2]}}</p>
+                <p title="Diseases Predciction">
+                  {{row[9]}}, {{row[10]}}, {{row[11]}}
+                </p>
+                <input
+                            type="checkbox"
+                            id="{{ row[0] }}"
+                            value="{{row[0]}}"
+                          />
+              </div>
+              <div class="accordion-item-body">
+                <div class="accordion-item-body-content">
+                  <table>
+                    <thead>
+                      <tr title="HeartRate: {{ row[3] }} count/min, 
+                HeartRateVariabilitySDNN: {{ row[4] }} ms, 
+                RespiratoryRate: {{ row[5] }} count/min, 
+                OxygenSaturation: {{ row[6] }} %, 
+                WristTemperature: {{ row[7] }} degC, 
+                BodyMass: {{ row[8] }} kg">
+                      <th>Diets</th>
+                      <th>Workouts</th>
+                      <th>Medications</th>
+                      <th>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                       <tr>
+                        <td title="{{row[18]}}">{{row[15]}}</td>
+                        <td title="{{row[24]}}">{{row[21]}}</td>
+                        <td title="{{row[30]}}">{{row[27]}}</td>
+                      </tr>
+                      <tr>
+                        <td title="{{row[19]}}">{{row[16]}}</td>
+                        <td title="{{row[25]}}">{{row[22]}}</td>
+                        <td title="{{row[31]}}">{{row[28]}}</td>
+                      </tr>
+                      <tr>
+                        <td title="{{row[20]}}">{{row[17]}}</td>
+                        <td title="{{row[26]}}">{{row[23]}}</td>
+                        <td title="{{row[32]}}">{{row[29]}}</td>
+                      </tr>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <h1>Ranged Logs</h1>
+            {% for row in average_database %}
+
+            <div class="accordion-item">
+              <div class="accordion-item-header">
+                <p title="Sl.no">{{row[0]}}</p>
+                <p title="Start Sl.no">{{row[1]}}</p>
+                <p title="End Sl.no">{{row[2]}}</p>
+                <p title="Date">{{row[3]}}</p>
+                <p title="Time">{{row[4]}}</p>
+                <p title="Diseases Prediction">
+                  {{row[11]}}, {{row[12]}}, {{row[13]}}
+                </p>
+              </div>
+              <div class="accordion-item-body">
+                <div class="accordion-item-body-content">
+                  <table>
+                    <thead>
+                      <tr
+              title="HeartRate: {{ row[5] }} count/min, 
+                HeartRateVariabilitySDNN: {{ row[6] }} ms, 
+                OxygenSaturation: {{ row[7] }} %, 
+                RespiratoryRate: {{ row[8] }} count/min, 
+                WristTemperature: {{ row[9] }} degC, 
+                BodyMass: {{ row[10] }} kg"
+            >
+                      <th>Diets</th>
+                      <th>Workouts</th>
+                      <th>Medications</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                       <tr>
+                        <td title="{{row[20]}}">{{row[17]}}</td>
+                        <td title="{{row[26]}}">{{row[23]}}</td>
+                        <td title="{{row[32]}}">{{row[29]}}</td>
+                      </tr>
+                      <tr>
+                        <td title="{{row[21]}}">{{row[18]}}</td>
+                        <td title="{{row[27]}}">{{row[24]}}</td>
+                        <td title="{{row[33]}}">{{row[30]}}</td>
+                      </tr>
+                      <tr>
+                        <td title="{{row[22]}}">{{row[19]}}</td>
+                        <td title="{{row[28]}}">{{row[25]}}</td>
+                        <td title="{{row[34]}}">{{row[31]}}</td>
+                      </tr>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!--<span class="tooltiptext">Disease name</span>-->
+          </div>
+
+
+    </div>
+
+    <div class="container">
+      <div class="center">
+        <button type="text" class="button" style="width:50%;text-align:center;color: white; text-decoration: None">
+          <a href="/" style="color: white; text-decoration: None"
+            ><span>Home</span></a
+          >
+        </button>
+        <form id="myForm" action="/average_analytics" method="POST" style="display: inline-block;">
+          <!-- your form elements here -->
+          <button class="button" id="getCheckedButton">
+            <a
+              href="/average_analytics"
+              style="width:50%;text-align:center;color: white; text-decoration: None"
+              ><span>Analyze Selected Reports</span></a
+            >
+          </button>
+        </form>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        // add event listener to form submission
+        $("#myForm").submit(function (event) {
+          // prevent form from submitting normally
+          event.preventDefault();
+
+          // get selected checkbox ids
+          var ids = [];
+          $("input:checked").each(function () {
+            ids.push($(this).attr("id"));
+          });
+
+          // add ids to form data
+          var formData = new FormData(this);
+          formData.append("ids", JSON.stringify(ids));
+          console.log(ids);
+          // submit form using AJAX request
+          $.ajax({
+            type: "POST",
+            url: "/average_analytics",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              // handle success response
+            },
+            error: function (xhr, status, error) {
+              // handle error response
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

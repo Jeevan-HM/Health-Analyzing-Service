@@ -1,0 +1,174 @@
+@import url('https:///fonts.googleapis.com/css?family=Montserrat');
+
+
+* {
+    margin: 10;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  color: #000000;
+}
+h1 {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 2rem;
+}
+
+.accordion {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+.accordion-item {
+  background-color: #fff;
+  color: #111;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
+}
+.accordion-item-header {
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  min-height: 3.5rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.accordion-item-header::after {
+  content: "\002B";
+  font-size: 2rem;
+  position: absolute;
+  right: 1rem;
+}
+.accordion-item-header.active::after {
+  content: "\2212";
+}
+.accordion-item-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.accordion-item-body-content {
+  padding: 1rem;
+  line-height: 1.5rem;
+  border-top: 1px solid;
+  border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+}
+
+@media(max-width:767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.accordion-item-body-content td{
+  background-color: #fff;
+  color: #111;
+  text-align: center;
+}
+.accordion-item-body-content table{
+  /*margin: 5%;
+  padding: 5%;*/
+  font-size: 18px;
+}
+
+h2{
+  align-self: self-start;
+  border-radius: 1%;
+  border: #111;
+  padding: auto;
+  margin: auto;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #3B71CA;
+  border-color: #0d6efd;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+  border: 2px solid transparent;
+}
+.button:hover,
+.button:focus {
+  background-color: #c2c7c7;
+  border-color: #7aa8b7;
+}
+.container { 
+  height: 150px;
+  position: relative; 
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+table {
+  margin-top: 5%;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #eee;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+.tooltip {
+  position: relative !important;
+  
+  
+}
+
+
+.tooltip .tooltiptext {
+  visibility: hidden !important;
+  width: 120px !important;
+  background-color: black !important;
+  color: #fff !important;
+  text-align: center !important;
+  padding: 5px 0 !important;
+  border-radius: 6px !important;
+ 
+  
+  position: absolute !important;
+  z-index: 1 !important;
+}
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible !important;
+}
