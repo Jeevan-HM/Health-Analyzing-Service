@@ -500,7 +500,7 @@ toolz @ file:///home/linux1/recipes/ci/toolz_1610987900194/work
 torch==1.12.1
 torchaudio==0.12.1
 torchvision==0.13.1
-tornado==6.2
+tornado==6.3.3
 tqdm @ file:///tmp/build/80754af9/tqdm_1635330843403/work
 traitlets @ file:///tmp/build/80754af9/traitlets_1632522747050/work
 typed-ast @ file:///opt/concourse/worker/volumes/live/c2210c24-bb2d-4474-77f5-1bc9bf1cb79f/volume/typed-ast_1624953683856/work
