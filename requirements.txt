@@ -510,7 +510,7 @@ uc-micro-py==1.0.1
 ujson==5.5.0
 unicodecsv==0.14.1
 Unidecode @ file:///tmp/build/80754af9/unidecode_1614712377438/work
-urllib3==1.24.3
+urllib3==1.26.17
 uvicorn==0.18.3
 uvloop==0.17.0
 watchdog @ file:///opt/concourse/worker/volumes/live/3aa0e7d9-c795-4854-41fd-f0b2492c886a/volume/watchdog_1624955010200/work
